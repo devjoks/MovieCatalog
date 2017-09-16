@@ -25398,3 +25398,15 @@ page-movie .card-background-page .dataComic p {
   -webkit-box-shadow: 1px 1px 2px 0px rgba(0, 0, 0, 0.75);
   box-shadow: 1px 1px 2px 0px rgba(0, 0, 0, 0.75);
 }
+
+page-movie .card-background-page .recomementaionMovies h3 {
+  padding-left: 2rem;
+}
+
+page-movie .galleryRecommendation {
+  background: #F0ECEC;
+}
+
+page-movie .recomMov {
+  padding: 0.5rem;
+}

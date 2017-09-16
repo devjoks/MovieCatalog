@@ -253,15 +253,14 @@ var MyApp = (function () {
 }());
 __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* Nav */]),
-    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* Nav */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* Nav */]) === "function" && _a || Object)
+    __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* Nav */])
 ], MyApp.prototype, "nav", void 0);
 MyApp = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({template:/*ion-inline-start:"C:\Users\Usuario\Documents\GitProject\MovieCatalog\src\app\app.html"*/'<ion-menu [content]="content">\n  <ion-header>\n    <ion-toolbar>\n      <ion-title>Menu</ion-title>\n    </ion-toolbar>\n  </ion-header>\n\n  <ion-content>\n    <ion-list>\n      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">\n        {{p.title}}\n      </button>\n      <ion-item-divider color="light">Generos</ion-item-divider>\n      <button menuClose ion-item *ngFor="let g of genres" (click)="openPage()">\n        {{g._genre}}\n      </button>\n    </ion-list>\n  </ion-content>\n\n</ion-menu>\n\n<!-- Disable swipe-to-go-back because it\'s poor UX to combine STGB with side menus -->\n<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>'/*ion-inline-end:"C:\Users\Usuario\Documents\GitProject\MovieCatalog\src\app\app.html"*/
     }),
-    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Platform */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Platform */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]) === "function" && _d || Object])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]])
 ], MyApp);
 
-var _a, _b, _c, _d;
 //# sourceMappingURL=app.component.js.map
 
 /***/ }),
@@ -293,6 +292,7 @@ var MovieServiceProvider = (function () {
         this.listComic = [];
         this.listComicSearch = [];
         this._Comic = [];
+        this.listRecommendation = [];
         this._APIKey = "00284bc66287b619fc67b99f83a88a02";
         this._URLBase = "https://api.themoviedb.org/3/";
         // api_key="+ this._APIKey +"&language=es-ES&sort_by=popularity.desc&include_adult=false&include_video=true&page="+ index +"&year=2017
@@ -320,7 +320,14 @@ var MovieServiceProvider = (function () {
             .subscribe(function (data) {
             _this._Comic = data;
             _this.setDate;
-            console.log(_this._Comic);
+        });
+    };
+    MovieServiceProvider.prototype.loadRecommendation = function (_id) {
+        var _this = this;
+        this.http.get(this._URLBase + "movie/" + _id + "/recommendations?api_key=" + this._APIKey + "&language=es-ES")
+            .map(function (res) { return res.json(); })
+            .subscribe(function (data) {
+            _this.listRecommendation = data.results;
         });
     };
     MovieServiceProvider.prototype.setDate = function () {
@@ -377,29 +384,35 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var MoviePage = (function () {
+var MoviePage = MoviePage_1 = (function () {
     function MoviePage(navCtrl, navParams, dbComic) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.dbComic = dbComic;
         this._dbComic = navParams.get("dbComic");
         dbComic.loadComic(this._dbComic["id"]);
+        dbComic.loadRecommendation(this._dbComic["id"]);
     }
+    MoviePage.prototype.pushPage = function (_dbComic) {
+        this.navCtrl.push(MoviePage_1, {
+            dbComic: _dbComic
+        });
+    };
     MoviePage.prototype.ionViewDidLoad = function () {
         console.log('ionViewDidLoad ComicPage');
     };
     return MoviePage;
 }());
-MoviePage = __decorate([
+MoviePage = MoviePage_1 = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* IonicPage */])(),
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-movie',template:/*ion-inline-start:"C:\Users\Usuario\Documents\GitProject\MovieCatalog\src\pages\movie\movie.html"*/'<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>{{ dbComic._Comic.title }}</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content class="card-background-page">\n  \n  <ion-card class="bg_image">\n    <img src="https://image.tmdb.org/t/p/w500/{{ dbComic._Comic.backdrop_path }}"/>\n  </ion-card>\n  <ion-grid class="contentComic">\n    <ion-row class="imageandtextOneComic">\n      <ion-col col-4>\n        <ion-card class="miniComicIMG">\n          <img src="https://image.tmdb.org/t/p/w500/{{ dbComic._Comic.poster_path }}"/>\n        </ion-card>      \n      </ion-col>\n      <ion-col col-8>\n          <h2 class="comicTitle">{{ dbComic._Comic.title }}</h2>\n      </ion-col>\n    </ion-row>\n    <ion-row class="dataComic">\n        <ion-col col-4 text-center>Puntuación:<br><ion-badge>{{ dbComic._Comic.vote_average }}/10</ion-badge></ion-col>\n        <ion-col col-4 text-center>Lanzamiento:<br><ion-badge>{{ dbComic._Comic.release_date |  date:\'dd/MM/yyyy\' }}</ion-badge></ion-col>\n        <ion-col col-4 text-center>Duración:<br><ion-badge>{{ dbComic._Comic.runtime }} min.</ion-badge></ion-col>\n        <ion-col col-12 text-left margin-left>Categorias:<br>\n          <ion-badge *ngFor="let genre of dbComic._Comic.genres">{{ genre.name }}</ion-badge>\n        </ion-col>\n        <ion-col col-12>\n            <h3>Resumen</h3>\n            <p padding text-justify>{{ dbComic._Comic.overview}}</p>\n        </ion-col>\n    <!-- </ion-row>\n\n    <ion-row> -->\n    </ion-row>\n  </ion-grid>\n\n</ion-content>'/*ion-inline-end:"C:\Users\Usuario\Documents\GitProject\MovieCatalog\src\pages\movie\movie.html"*/,
+        selector: 'page-movie',template:/*ion-inline-start:"C:\Users\Usuario\Documents\GitProject\MovieCatalog\src\pages\movie\movie.html"*/'<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>{{ dbComic._Comic.title }}</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content class="card-background-page">\n  \n  <ion-card class="bg_image">\n    <img src="https://image.tmdb.org/t/p/w500/{{ dbComic._Comic.backdrop_path }}"/>\n  </ion-card>\n  <ion-grid class="contentComic">\n    <ion-row class="imageandtextOneComic">\n      <ion-col col-4>\n        <ion-card class="miniComicIMG">\n          <img src="https://image.tmdb.org/t/p/w500/{{ dbComic._Comic.poster_path }}"/>\n        </ion-card>      \n      </ion-col>\n      <ion-col col-8>\n          <h2 class="comicTitle">{{ dbComic._Comic.title }}</h2>\n      </ion-col>\n    </ion-row>\n    <ion-row class="dataComic">\n        <ion-col col-4 text-center>Puntuación:<br><ion-badge>{{ dbComic._Comic.vote_average }}/10</ion-badge></ion-col>\n        <ion-col col-4 text-center>Lanzamiento:<br><ion-badge>{{ dbComic._Comic.release_date |  date:\'dd/MM/yyyy\' }}</ion-badge></ion-col>\n        <ion-col col-4 text-center>Duración:<br><ion-badge>{{ dbComic._Comic.runtime }} min.</ion-badge></ion-col>\n        <ion-col col-12 text-left margin-left>Categorias:<br>\n          <ion-badge *ngFor="let genre of dbComic._Comic.genres">{{ genre.name }}</ion-badge>\n        </ion-col>\n        <ion-col col-12>\n            <h3>Resumen</h3>\n            <p padding text-justify>{{ dbComic._Comic.overview}}</p>\n        </ion-col>\n    </ion-row>\n    <ion-row class="recomementaionMovies">\n        <ion-col col-12>\n          <h3>Recomendaciones</h3>\n        <ion-slides class="galleryRecommendation " loop="true" slidesPerView="3">\n          <ion-slide *ngFor="let movie of dbComic.listRecommendation">\n            <img class="recomMov" src="https://image.tmdb.org/t/p/w500/{{ movie.poster_path }}" (click)="pushPage(movie)" imageViewer/>\n          </ion-slide>\n        </ion-slides>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n\n</ion-content>'/*ion-inline-end:"C:\Users\Usuario\Documents\GitProject\MovieCatalog\src\pages\movie\movie.html"*/,
         providers: [__WEBPACK_IMPORTED_MODULE_2__providers_movie_service_movie_service__["a" /* MovieServiceProvider */]]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__providers_movie_service_movie_service__["a" /* MovieServiceProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_movie_service_movie_service__["a" /* MovieServiceProvider */]) === "function" && _c || Object])
 ], MoviePage);
 
-var _a, _b, _c;
+var MoviePage_1, _a, _b, _c;
 //# sourceMappingURL=movie.js.map
 
 /***/ })

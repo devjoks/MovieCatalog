@@ -34,9 +34,16 @@
             <h3>Resumen</h3>
             <p padding text-justify>{{ dbComic._Comic.overview}}</p>
         </ion-col>
-    <!-- </ion-row>
-
-    <ion-row> -->
+    </ion-row>
+    <ion-row class="recomementaionMovies">
+        <ion-col col-12>
+          <h3>Recomendaciones</h3>
+        <ion-slides class="galleryRecommendation " loop="true" slidesPerView="3">
+          <ion-slide *ngFor="let movie of dbComic.listRecommendation">
+            <img class="recomMov" src="https://image.tmdb.org/t/p/w500/{{ movie.poster_path }}" (click)="pushPage(movie)" imageViewer/>
+          </ion-slide>
+        </ion-slides>
+      </ion-col>
     </ion-row>
   </ion-grid>
 

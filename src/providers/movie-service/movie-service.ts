@@ -7,7 +7,8 @@ export class MovieServiceProvider {
 
   private listComic:any[] = [];
   private listComicSearch:any[] = [];
-  _Comic:any[] = [];
+  private _Comic:any[] = [];
+  private listRecommendation:any[] = [];
   cargo: any;
   private _APIKey:String = "00284bc66287b619fc67b99f83a88a02";
   private _URLBase: String = "https://api.themoviedb.org/3/";
@@ -41,9 +42,17 @@ export class MovieServiceProvider {
     .subscribe (data => {
       this._Comic = data;
       this.setDate;
-      console.log(this._Comic);
     });
   }
+
+  public loadRecommendation(_id: number){
+    this.http.get(this._URLBase + "movie/" + _id + "/recommendations?api_key="+ this._APIKey + "&language=es-ES")
+    .map( res => res.json())
+    .subscribe (data => {
+      this.listRecommendation = data.results;
+    });
+  }
+
   private setDate(){
     this._Comic["release_date"] = new Date(this._Comic["release_date"]);
   }
