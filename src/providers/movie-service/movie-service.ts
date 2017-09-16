@@ -9,6 +9,8 @@ export class MovieServiceProvider {
   private listComicSearch:any[] = [];
   private _Comic:any[] = [];
   private listRecommendation:any[] = [];
+  private lastList:any[] = [];
+
   cargo: any;
   private _APIKey:String = "00284bc66287b619fc67b99f83a88a02";
   private _URLBase: String = "https://api.themoviedb.org/3/";
@@ -57,8 +59,11 @@ export class MovieServiceProvider {
     this._Comic["release_date"] = new Date(this._Comic["release_date"]);
   }
   private addMoreComic(_listComic:any[]){
-    this.listComic = this.listComic.concat(_listComic);
-    this.listComicSearch = this.listComicSearch.concat(_listComic);
+    if(!(JSON.stringify(this.lastList) === JSON.stringify(_listComic))){
+      this.listComic = this.listComic.concat(_listComic);
+      this.listComicSearch = this.listComicSearch.concat(_listComic);
+      this.lastList = _listComic;
+    }
   }
   private initializeItems() {
     this.listComicSearch = this.listComic;
@@ -67,6 +72,7 @@ export class MovieServiceProvider {
   public getComicList(){
     return this.listComic;
   }
+  
   public getItems(ev: any) {
 
     this.initializeItems();
@@ -74,9 +80,20 @@ export class MovieServiceProvider {
 
     if (val && val.trim() != '') {
       this.listComicSearch = this.listComicSearch.filter((item) => {
+        if(item.title.toLowerCase().indexOf(val.toLowerCase()) == -1){
+          this.loadQuery(val);
+        }
         return (item.title.toLowerCase().indexOf(val.toLowerCase()) > -1 || item.release_date.toLowerCase().indexOf(val.toLowerCase()) > -1 );
       })
     }
   }
+
+  loadQuery(_query:String){
+    this.http.get(this._URLBase + "search/movie?api_key="+ this._APIKey + "&language=es-ES&page=1&query=" + _query)
+    .map( res => res.json())
+    .subscribe (data => {
+      this.addMoreComic(data.results);
+    });
+}
 
 }

@@ -19,8 +19,9 @@
           <img src="https://image.tmdb.org/t/p/w500/{{ dbComic._Comic.poster_path }}"/>
         </ion-card>      
       </ion-col>
-      <ion-col col-8>
-          <h2 class="comicTitle">{{ dbComic._Comic.title }}</h2>
+      <ion-col col-8 >
+          <h2 class="comicTitle" >{{ dbComic._Comic.title }}</h2>
+          <small><b>Título Original: </b>{{ dbComic._Comic.original_title }}</small>
       </ion-col>
     </ion-row>
     <ion-row class="dataComic">
@@ -32,9 +33,22 @@
         </ion-col>
         <ion-col col-12>
             <h3>Resumen</h3>
-            <p padding text-justify>{{ dbComic._Comic.overview}}</p>
+            <p padding text-justify>{{ dbComic._Comic.overview }}</p>
         </ion-col>
     </ion-row>
+    <ion-row>
+      <ion-col col-12>
+          <h3>Productoras</h3>
+        <ion-list>
+          <ion-item *ngFor="let comProd of dbComic._Comic.production_companies">
+            <!-- <ion-thumbnail item-start>
+              <img src="img/thumbnail-totoro.png">
+            </ion-thumbnail> -->
+            <h2>{{ comProd.name }}</h2>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>    
     <ion-row class="recomementaionMovies">
         <ion-col col-12>
           <h3>Recomendaciones</h3>

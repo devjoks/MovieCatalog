@@ -16,21 +16,13 @@ export class MyApp {
   rootPage: any = HomePage;
 
   pages: Array<{title: string, component: any}>;
-  genres: Array<{_genre: string, _id: number}>;
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Home', component: HomePage }
-    ];
-    this.genres = [
-      { _genre: 'Acción', _id: 28 },
-      { _genre: 'Aventura', _id: 12 },
-      { _genre: 'Animación', _id: 16 },
-      { _genre: 'Comedia', _id: 35 },
-      { _genre: 'Crimen', _id: 80 }
+      { title: 'Inicio', component: HomePage }
     ];
 
   }

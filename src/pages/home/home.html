@@ -3,7 +3,7 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title *ngIf="!buttonClicked" >Catálogo de Comics</ion-title>
+    <ion-title *ngIf="!buttonClicked" >Catálogo de Películas</ion-title>
     <ion-searchbar class="animated fadeInRight" (ionInput)="dbComic.getItems($event)" *ngIf="buttonClicked"></ion-searchbar>
     <ion-buttons end>
       <button ion-button icon-only (click)="onButtonClick()">
