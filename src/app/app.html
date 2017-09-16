@@ -10,6 +10,10 @@
       <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
         {{p.title}}
       </button>
+      <ion-item-divider color="light">Generos</ion-item-divider>
+      <button menuClose ion-item *ngFor="let g of genres" (click)="openPage()">
+        {{g._genre}}
+      </button>
     </ion-list>
   </ion-content>
 

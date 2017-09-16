@@ -16,6 +16,7 @@ export class MoviePage {
                 public navParams: NavParams,
                 public dbComic: MovieServiceProvider) {
                   this._dbComic = navParams.get("dbComic");
+                  dbComic.loadComic(this._dbComic["id"]);
     }
   
     ionViewDidLoad() {

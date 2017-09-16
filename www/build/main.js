@@ -49,8 +49,8 @@ module.exports = webpackAsyncContext;
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(38);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_movie_service_movie_service__ = __webpack_require__(77);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__movie_movie__ = __webpack_require__(49);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_movie_service_movie_service__ = __webpack_require__(76);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__movie_movie__ = __webpack_require__(99);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -95,7 +95,7 @@ var HomePage = (function () {
 }());
 HomePage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-home',template:/*ion-inline-start:"C:\Users\Usuario\Documents\GitProject\MovieCatalog\src\pages\home\home.html"*/'<ion-header>\n  <ion-navbar>\n    <!-- <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button> -->\n    <ion-title *ngIf="!buttonClicked" >Catálogo de Comics</ion-title>\n    <ion-searchbar class="animated fadeInRight" (ionInput)="dbComic.getItems($event)" *ngIf="buttonClicked"></ion-searchbar>\n    <ion-buttons end>\n      <button ion-button icon-only (click)="onButtonClick()">\n        <ion-icon name="search"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n</ion-header>\n\n<ion-content class="card-background-page">\n    <ion-list class="item-content">\n        <ion-item class="itemComic" *ngFor="let comic of dbComic.listComicSearch; let i=index;">\n            <ion-card (click)="pushPage(comic)">\n              <img src="https://image.tmdb.org/t/p/w500/{{ comic.poster_path }}"/>\n                <ion-grid class="card-title">\n                  <ion-row >\n                    <h3 col-8 text-left>{{ comic.title }}</h3>\n                    <h4 col-4 text-right>{{ comic.release_date | slice: 0:4}}</h4>\n                  </ion-row>\n                </ion-grid>\n            </ion-card>\n      </ion-item>\n      \n    </ion-list>\n\n    <ion-infinite-scroll (ionInfinite)="doInfinite($event)">\n      <ion-infinite-scroll-content></ion-infinite-scroll-content>\n    </ion-infinite-scroll>\n\n  </ion-content>'/*ion-inline-end:"C:\Users\Usuario\Documents\GitProject\MovieCatalog\src\pages\home\home.html"*/,
+        selector: 'page-home',template:/*ion-inline-start:"C:\Users\Usuario\Documents\GitProject\MovieCatalog\src\pages\home\home.html"*/'<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title *ngIf="!buttonClicked" >Catálogo de Comics</ion-title>\n    <ion-searchbar class="animated fadeInRight" (ionInput)="dbComic.getItems($event)" *ngIf="buttonClicked"></ion-searchbar>\n    <ion-buttons end>\n      <button ion-button icon-only (click)="onButtonClick()">\n        <ion-icon name="search"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n</ion-header>\n\n<ion-content class="card-background-page">\n    <ion-list class="item-content">\n        <ion-item class="itemComic" *ngFor="let comic of dbComic.listComicSearch; let i=index;">\n            <ion-card (click)="pushPage(comic)">\n              <img src="https://image.tmdb.org/t/p/w500/{{ comic.poster_path }}"/>\n                <ion-grid class="card-title">\n                  <ion-row >\n                    <h3 col-8 text-left>{{ comic.title }}</h3>\n                    <h4 col-4 text-right>{{ comic.release_date | slice: 0:4}}</h4>\n                  </ion-row>\n                </ion-grid>\n            </ion-card>\n      </ion-item>\n      \n    </ion-list>\n\n    <ion-infinite-scroll (ionInfinite)="doInfinite($event)">\n      <ion-infinite-scroll-content></ion-infinite-scroll-content>\n    </ion-infinite-scroll>\n\n  </ion-content>'/*ion-inline-end:"C:\Users\Usuario\Documents\GitProject\MovieCatalog\src\pages\home\home.html"*/,
         providers: [__WEBPACK_IMPORTED_MODULE_2__providers_movie_service_movie_service__["a" /* MovieServiceProvider */]]
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */],
@@ -131,10 +131,10 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(151);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_component__ = __webpack_require__(256);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_home_home__ = __webpack_require__(195);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_movie_movie__ = __webpack_require__(49);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_movie_movie__ = __webpack_require__(99);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ionic_native_status_bar__ = __webpack_require__(191);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ionic_native_splash_screen__ = __webpack_require__(194);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__providers_movie_service_movie_service__ = __webpack_require__(77);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__providers_movie_service_movie_service__ = __webpack_require__(76);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -201,7 +201,6 @@ AppModule = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(191);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(194);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_home_home__ = __webpack_require__(195);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_movie_movie__ = __webpack_require__(49);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -216,7 +215,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
+// import { MoviePage } from '../pages/movie/movie';
 var MyApp = (function () {
     function MyApp(platform, statusBar, splashScreen) {
         this.platform = platform;
@@ -226,8 +225,14 @@ var MyApp = (function () {
         this.initializeApp();
         // used for an example of ngFor and navigation
         this.pages = [
-            { title: 'Home', component: __WEBPACK_IMPORTED_MODULE_4__pages_home_home__["a" /* HomePage */] },
-            { title: 'Movie', component: __WEBPACK_IMPORTED_MODULE_5__pages_movie_movie__["a" /* MoviePage */] }
+            { title: 'Home', component: __WEBPACK_IMPORTED_MODULE_4__pages_home_home__["a" /* HomePage */] }
+        ];
+        this.genres = [
+            { _genre: 'Acción', _id: 28 },
+            { _genre: 'Aventura', _id: 12 },
+            { _genre: 'Animación', _id: 16 },
+            { _genre: 'Comedia', _id: 35 },
+            { _genre: 'Crimen', _id: 80 }
         ];
     }
     MyApp.prototype.initializeApp = function () {
@@ -248,66 +253,20 @@ var MyApp = (function () {
 }());
 __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* Nav */]),
-    __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* Nav */])
+    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* Nav */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* Nav */]) === "function" && _a || Object)
 ], MyApp.prototype, "nav", void 0);
 MyApp = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({template:/*ion-inline-start:"C:\Users\Usuario\Documents\GitProject\MovieCatalog\src\app\app.html"*/'<ion-menu [content]="content">\n  <ion-header>\n    <ion-toolbar>\n      <ion-title>Menu</ion-title>\n    </ion-toolbar>\n  </ion-header>\n\n  <ion-content>\n    <ion-list>\n      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">\n        {{p.title}}\n      </button>\n    </ion-list>\n  </ion-content>\n\n</ion-menu>\n\n<!-- Disable swipe-to-go-back because it\'s poor UX to combine STGB with side menus -->\n<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>'/*ion-inline-end:"C:\Users\Usuario\Documents\GitProject\MovieCatalog\src\app\app.html"*/
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({template:/*ion-inline-start:"C:\Users\Usuario\Documents\GitProject\MovieCatalog\src\app\app.html"*/'<ion-menu [content]="content">\n  <ion-header>\n    <ion-toolbar>\n      <ion-title>Menu</ion-title>\n    </ion-toolbar>\n  </ion-header>\n\n  <ion-content>\n    <ion-list>\n      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">\n        {{p.title}}\n      </button>\n      <ion-item-divider color="light">Generos</ion-item-divider>\n      <button menuClose ion-item *ngFor="let g of genres" (click)="openPage()">\n        {{g._genre}}\n      </button>\n    </ion-list>\n  </ion-content>\n\n</ion-menu>\n\n<!-- Disable swipe-to-go-back because it\'s poor UX to combine STGB with side menus -->\n<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>'/*ion-inline-end:"C:\Users\Usuario\Documents\GitProject\MovieCatalog\src\app\app.html"*/
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]])
+    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Platform */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Platform */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]) === "function" && _d || Object])
 ], MyApp);
 
+var _a, _b, _c, _d;
 //# sourceMappingURL=app.component.js.map
 
 /***/ }),
 
-/***/ 49:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MoviePage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(38);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_movie_service_movie_service__ = __webpack_require__(77);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-var MoviePage = (function () {
-    function MoviePage(navCtrl, navParams, dbComic) {
-        this.navCtrl = navCtrl;
-        this.navParams = navParams;
-        this.dbComic = dbComic;
-        this._dbComic = navParams.get("dbComic");
-    }
-    MoviePage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad ComicPage');
-    };
-    return MoviePage;
-}());
-MoviePage = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* IonicPage */])(),
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-movie',template:/*ion-inline-start:"C:\Users\Usuario\Documents\GitProject\MovieCatalog\src\pages\movie\movie.html"*/'<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>{{ _dbComic.title }}</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content class="card-background-page">\n  \n  <ion-card class="bg_image">\n    <img src="https://image.tmdb.org/t/p/w500/{{ _dbComic.backdrop_path }}"/>\n  </ion-card>\n  <ion-grid class="contentComic">\n    <ion-row class="imageandtextOneComic">\n      <ion-col col-4>\n        <ion-card class="miniComicIMG">\n          <img src="https://image.tmdb.org/t/p/w500/{{ _dbComic.poster_path }}"/>\n        </ion-card>      \n      </ion-col>\n      <ion-col col-8>\n          <h2 class="comicTitle">{{ _dbComic.title }}</h2>\n      </ion-col>\n    </ion-row>\n    <ion-row class="dataComic">\n        <ion-col col-4 text-center>Restricción:<br><ion-badge>{{ _dbComic.Rated }}</ion-badge></ion-col>\n        <ion-col col-4 text-center>Lanzamiento:<br><ion-badge>{{ _dbComic.release_date }}</ion-badge></ion-col>\n        <ion-col col-4 text-center>Duración:<br><ion-badge>{{ _dbComic.Runtime }}</ion-badge></ion-col>\n        <ion-col col-12 text-center>Categorias:<br><ion-badge>{{ _dbComic.genre_ids }}</ion-badge></ion-col>\n        <ion-col col-12>\n            <h3>Resumen</h3>\n            <p padding text-justify>{{ _dbComic.overview}}</p>\n        </ion-col>\n    <!-- </ion-row>\n\n    <ion-row> -->\n    </ion-row>\n  </ion-grid>\n\n</ion-content>'/*ion-inline-end:"C:\Users\Usuario\Documents\GitProject\MovieCatalog\src\pages\movie\movie.html"*/,
-        providers: [__WEBPACK_IMPORTED_MODULE_2__providers_movie_service_movie_service__["a" /* MovieServiceProvider */]]
-    }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */],
-        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */],
-        __WEBPACK_IMPORTED_MODULE_2__providers_movie_service_movie_service__["a" /* MovieServiceProvider */]])
-], MoviePage);
-
-//# sourceMappingURL=movie.js.map
-
-/***/ }),
-
-/***/ 77:
+/***/ 76:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -328,18 +287,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-/*
-  Generated class for the MovieServiceProvider provider.
-
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
 var MovieServiceProvider = (function () {
     function MovieServiceProvider(http) {
         this.http = http;
         this.listComic = [];
         this.listComicSearch = [];
+        this._Comic = [];
         this._APIKey = "00284bc66287b619fc67b99f83a88a02";
+        this._URLBase = "https://api.themoviedb.org/3/";
+        // api_key="+ this._APIKey +"&language=es-ES&sort_by=popularity.desc&include_adult=false&include_video=true&page="+ index +"&year=2017
         this.searchQuery = '';
         this.cargo = false;
     }
@@ -349,7 +305,7 @@ var MovieServiceProvider = (function () {
             return Promise.resolve(this.cargo);
         }
         return new Promise(function (resolve) {
-            _this.http.get("https://api.themoviedb.org/3/discover/movie?api_key=" + _this._APIKey + "&language=es-ES&sort_by=popularity.desc&include_adult=false&include_video=true&page=" + index + "&year=2017")
+            _this.http.get(_this._URLBase + "discover/movie?api_key=" + _this._APIKey + "&sort_by=popularity.desc&page=" + index + "&language=es-ES")
                 .map(function (res) { return res.json(); })
                 .subscribe(function (data) {
                 _this.addMoreComic(data.results);
@@ -357,8 +313,18 @@ var MovieServiceProvider = (function () {
             });
         });
     };
-    MovieServiceProvider.prototype.getComicList = function () {
-        return this.listComic;
+    MovieServiceProvider.prototype.loadComic = function (_id) {
+        var _this = this;
+        this.http.get(this._URLBase + "movie/" + _id + "?api_key=" + this._APIKey + "&language=es-ES")
+            .map(function (res) { return res.json(); })
+            .subscribe(function (data) {
+            _this._Comic = data;
+            _this.setDate;
+            console.log(_this._Comic);
+        });
+    };
+    MovieServiceProvider.prototype.setDate = function () {
+        this._Comic["release_date"] = new Date(this._Comic["release_date"]);
     };
     MovieServiceProvider.prototype.addMoreComic = function (_listComic) {
         this.listComic = this.listComic.concat(_listComic);
@@ -366,6 +332,9 @@ var MovieServiceProvider = (function () {
     };
     MovieServiceProvider.prototype.initializeItems = function () {
         this.listComicSearch = this.listComic;
+    };
+    MovieServiceProvider.prototype.getComicList = function () {
+        return this.listComic;
     };
     MovieServiceProvider.prototype.getItems = function (ev) {
         this.initializeItems();
@@ -385,6 +354,53 @@ MovieServiceProvider = __decorate([
 
 var _a;
 //# sourceMappingURL=movie-service.js.map
+
+/***/ }),
+
+/***/ 99:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MoviePage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(38);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_movie_service_movie_service__ = __webpack_require__(76);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var MoviePage = (function () {
+    function MoviePage(navCtrl, navParams, dbComic) {
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.dbComic = dbComic;
+        this._dbComic = navParams.get("dbComic");
+        dbComic.loadComic(this._dbComic["id"]);
+    }
+    MoviePage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad ComicPage');
+    };
+    return MoviePage;
+}());
+MoviePage = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* IonicPage */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        selector: 'page-movie',template:/*ion-inline-start:"C:\Users\Usuario\Documents\GitProject\MovieCatalog\src\pages\movie\movie.html"*/'<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>{{ dbComic._Comic.title }}</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content class="card-background-page">\n  \n  <ion-card class="bg_image">\n    <img src="https://image.tmdb.org/t/p/w500/{{ dbComic._Comic.backdrop_path }}"/>\n  </ion-card>\n  <ion-grid class="contentComic">\n    <ion-row class="imageandtextOneComic">\n      <ion-col col-4>\n        <ion-card class="miniComicIMG">\n          <img src="https://image.tmdb.org/t/p/w500/{{ dbComic._Comic.poster_path }}"/>\n        </ion-card>      \n      </ion-col>\n      <ion-col col-8>\n          <h2 class="comicTitle">{{ dbComic._Comic.title }}</h2>\n      </ion-col>\n    </ion-row>\n    <ion-row class="dataComic">\n        <ion-col col-4 text-center>Puntuación:<br><ion-badge>{{ dbComic._Comic.vote_average }}/10</ion-badge></ion-col>\n        <ion-col col-4 text-center>Lanzamiento:<br><ion-badge>{{ dbComic._Comic.release_date |  date:\'dd/MM/yyyy\' }}</ion-badge></ion-col>\n        <ion-col col-4 text-center>Duración:<br><ion-badge>{{ dbComic._Comic.runtime }} min.</ion-badge></ion-col>\n        <ion-col col-12 text-left margin-left>Categorias:<br>\n          <ion-badge *ngFor="let genre of dbComic._Comic.genres">{{ genre.name }}</ion-badge>\n        </ion-col>\n        <ion-col col-12>\n            <h3>Resumen</h3>\n            <p padding text-justify>{{ dbComic._Comic.overview}}</p>\n        </ion-col>\n    <!-- </ion-row>\n\n    <ion-row> -->\n    </ion-row>\n  </ion-grid>\n\n</ion-content>'/*ion-inline-end:"C:\Users\Usuario\Documents\GitProject\MovieCatalog\src\pages\movie\movie.html"*/,
+        providers: [__WEBPACK_IMPORTED_MODULE_2__providers_movie_service_movie_service__["a" /* MovieServiceProvider */]]
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__providers_movie_service_movie_service__["a" /* MovieServiceProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_movie_service_movie_service__["a" /* MovieServiceProvider */]) === "function" && _c || Object])
+], MoviePage);
+
+var _a, _b, _c;
+//# sourceMappingURL=movie.js.map
 
 /***/ })
 

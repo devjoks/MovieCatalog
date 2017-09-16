@@ -3,34 +3,36 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>{{ _dbComic.title }}</ion-title>
+    <ion-title>{{ dbComic._Comic.title }}</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content class="card-background-page">
   
   <ion-card class="bg_image">
-    <img src="https://image.tmdb.org/t/p/w500/{{ _dbComic.backdrop_path }}"/>
+    <img src="https://image.tmdb.org/t/p/w500/{{ dbComic._Comic.backdrop_path }}"/>
   </ion-card>
   <ion-grid class="contentComic">
     <ion-row class="imageandtextOneComic">
       <ion-col col-4>
         <ion-card class="miniComicIMG">
-          <img src="https://image.tmdb.org/t/p/w500/{{ _dbComic.poster_path }}"/>
+          <img src="https://image.tmdb.org/t/p/w500/{{ dbComic._Comic.poster_path }}"/>
         </ion-card>      
       </ion-col>
       <ion-col col-8>
-          <h2 class="comicTitle">{{ _dbComic.title }}</h2>
+          <h2 class="comicTitle">{{ dbComic._Comic.title }}</h2>
       </ion-col>
     </ion-row>
     <ion-row class="dataComic">
-        <ion-col col-4 text-center>Restricción:<br><ion-badge>{{ _dbComic.Rated }}</ion-badge></ion-col>
-        <ion-col col-4 text-center>Lanzamiento:<br><ion-badge>{{ _dbComic.release_date }}</ion-badge></ion-col>
-        <ion-col col-4 text-center>Duración:<br><ion-badge>{{ _dbComic.Runtime }}</ion-badge></ion-col>
-        <ion-col col-12 text-center>Categorias:<br><ion-badge>{{ _dbComic.genre_ids }}</ion-badge></ion-col>
+        <ion-col col-4 text-center>Puntuación:<br><ion-badge>{{ dbComic._Comic.vote_average }}/10</ion-badge></ion-col>
+        <ion-col col-4 text-center>Lanzamiento:<br><ion-badge>{{ dbComic._Comic.release_date |  date:'dd/MM/yyyy' }}</ion-badge></ion-col>
+        <ion-col col-4 text-center>Duración:<br><ion-badge>{{ dbComic._Comic.runtime }} min.</ion-badge></ion-col>
+        <ion-col col-12 text-left margin-left>Categorias:<br>
+          <ion-badge *ngFor="let genre of dbComic._Comic.genres">{{ genre.name }}</ion-badge>
+        </ion-col>
         <ion-col col-12>
             <h3>Resumen</h3>
-            <p padding text-justify>{{ _dbComic.overview}}</p>
+            <p padding text-justify>{{ dbComic._Comic.overview}}</p>
         </ion-col>
     <!-- </ion-row>
 
