@@ -14,6 +14,7 @@ export class MovieServiceProvider {
   private listComic:any[] = [];
   private listComicSearch:any[] = [];
   private cargo: any;
+  private _APIKey:String = "00284bc66287b619fc67b99f83a88a02";
   searchQuery: string = '';
   
   constructor(public http: Http) {
@@ -28,11 +29,10 @@ export class MovieServiceProvider {
       return Promise.resolve(this.cargo);
     }
     return new Promise( resolve => {
-      this.http.get("https://api.themoviedb.org/3/discover/movie?api_key=00284bc66287b619fc67b99f83a88a02&language=es-ES&sort_by=popularity.desc&include_adult=false&include_video=true&page=1&year=2017")
+      this.http.get("https://api.themoviedb.org/3/discover/movie?api_key="+ this._APIKey +"&language=es-ES&sort_by=popularity.desc&include_adult=false&include_video=true&page="+ index +"&year=2017")
       .map( res => res.json())
       .subscribe (data => {
-        this.listComic = data.results;
-        this.listComicSearch = data.results;
+        this.addMoreComic(data.results);
         resolve(this.cargo);
       });
     })
@@ -41,7 +41,10 @@ export class MovieServiceProvider {
   getComicList(){
     return this.listComic;
   }
-
+  addMoreComic(_listComic:any[]){
+    this.listComic = this.listComic.concat(_listComic);
+    this.listComicSearch = this.listComicSearch.concat(_listComic);
+  }
   initializeItems() {
     this.listComicSearch = this.listComic;
   }
@@ -57,4 +60,5 @@ export class MovieServiceProvider {
       })
     }
   }
+
 }

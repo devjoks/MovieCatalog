@@ -11,10 +11,11 @@ import { MoviePage } from '../movie/movie';
 export class HomePage {
 
   private _dbComic: MovieServiceProvider;
-  
+  private _pageNumber: number = 2;
+
     constructor(public navCtrl: NavController,
                 public dbComic: MovieServiceProvider) {
-                  dbComic.load();
+                  dbComic.load(1);
                   this._dbComic = dbComic;
     }
     public buttonClicked: boolean = false;
@@ -27,6 +28,19 @@ export class HomePage {
       this.navCtrl.push(MoviePage,{
         dbComic: _dbComic
       });
+    }
+
+    doInfinite(infiniteScroll) {
+      console.log('Begin async operation');
+  
+      setTimeout(() => {
+        
+        this._dbComic.load(this._pageNumber);
+        this._pageNumber++;
+
+        console.log('Async operation has ended');
+        infiniteScroll.complete();
+      }, 200);
     }
 
 }
