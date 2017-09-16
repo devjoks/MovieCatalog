@@ -93,6 +93,6 @@ export class MovieServiceProvider {
   //   .subscribe (data => {
   //     this.addMoreComic(data.results);
   //   });
-}
+// }
 
 }
