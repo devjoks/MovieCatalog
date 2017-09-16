@@ -56,7 +56,7 @@ export class MovieServiceProvider {
 
     if (val && val.trim() != '') {
       this.listComicSearch = this.listComicSearch.filter((item) => {
-        return (item.title.toLowerCase().indexOf(val.toLowerCase()) > -1);
+        return (item.title.toLowerCase().indexOf(val.toLowerCase()) > -1 || item.release_date.toLowerCase().indexOf(val.toLowerCase()) > -1 );
       })
     }
   }

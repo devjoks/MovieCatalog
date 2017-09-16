@@ -21,7 +21,7 @@
                 <ion-grid class="card-title">
                   <ion-row >
                     <h3 col-8 text-left>{{ comic.title }}</h3>
-                    <h4 col-4 text-right>{{ comic.release_date }}</h4>
+                    <h4 col-4 text-right>{{ comic.release_date | slice: 0:4}}</h4>
                   </ion-row>
                 </ion-grid>
             </ion-card>
